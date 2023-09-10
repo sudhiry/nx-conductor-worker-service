@@ -1,0 +1,6 @@
+server :
+  port : 9021
+
+conductor :
+  client :
+    serverUri: ${CONDUCTOR_SERVER_URL:http://localhost:8080/api/}

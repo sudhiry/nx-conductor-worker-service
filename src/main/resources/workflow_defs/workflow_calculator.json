@@ -1,0 +1,65 @@
+{
+  "name": "workflow_calculator",
+  "description": "Calculator as workflow",
+  "version": 1,
+  "tasks": [
+    {
+      "name": "task_add",
+      "taskReferenceName": "task_add_ref",
+      "inputParameters": {
+        "one": "${workflow.input.one}",
+        "two": "${workflow.input.two}"
+      },
+      "type": "SIMPLE"
+    },
+    {
+      "name": "task_subtract",
+      "taskReferenceName": "task_subtract_ref",
+      "inputParameters": {
+        "one": "${workflow.input.one}",
+        "two": "${workflow.input.two}"
+      },
+      "type": "SIMPLE"
+    },
+    {
+      "name": "task_human",
+      "taskReferenceName": "task_human_ref",
+      "inputParameters": {
+        "one": "${workflow.input.one}",
+        "two": "${workflow.input.two}"
+      },
+      "type": "HUMAN"
+    },
+    {
+      "name": "task_multiply",
+      "taskReferenceName": "task_multiply_ref",
+      "inputParameters": {
+        "one": "${task_human_ref.output.one}",
+        "two": "${workflow.input.two}"
+      },
+      "type": "SIMPLE"
+    }
+  ],
+  "inputParameters": [
+    "one",
+    "two"
+  ],
+  "outputParameters": {
+    "added": "${task_add_ref.output.result}",
+    "subtracted": "${task_subtract_ref.output.result}",
+    "multiplied": "${task_multiply_ref.output.result}"
+  },
+  "failureWorkflow": "",
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "ownerEmail": "admin@example.com",
+  "timeoutPolicy": "TIME_OUT_WF",
+  "timeoutSeconds": 36000000,
+  "variables": {},
+  "inputTemplate": {},
+  "onStateChange": {},
+  "taskToDomain": {
+    "*": "DEFAULT"
+  }
+}

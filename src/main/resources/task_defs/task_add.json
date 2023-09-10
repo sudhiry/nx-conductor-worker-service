@@ -1,0 +1,24 @@
+{
+  "name": "task_add",
+  "retryCount": 3,
+  "timeoutSeconds": 30,
+  "pollTimeoutSeconds": 60,
+  "inputKeys": [
+    "one",
+    "two"
+  ],
+  "outputKeys": [
+    "state",
+    "skipped",
+    "result"
+  ],
+  "timeoutPolicy": "TIME_OUT_WF",
+  "retryLogic": "FIXED",
+  "retryDelaySeconds": 1,
+  "responseTimeoutSeconds": 30,
+  "concurrentExecLimit": 100,
+  "rateLimitFrequencyInSeconds": 30,
+  "rateLimitPerFrequency": 10,
+  "ownerEmail": "admin@example.com",
+  "description": "Addition Task"
+}

@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.2'
+	id 'io.spring.dependency-management' version '1.1.2'
+}
+
+java {
+	sourceCompatibility = '17'
+	targetCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+group = 'com.netflix.conductor'
+version = '4.0.0'
+
+bootJar {
+	enabled = true
+}
+
+
+dependencies {
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation "com.netflix.conductor:conductor-common:3.13.8"
+	implementation "com.netflix.conductor:conductor-client:3.13.8"
+	implementation "com.netflix.conductor:conductor-java-sdk:3.13.8"
+
+	// FIX BY WORKAROUND: https://github.com/Netflix/conductor/issues/3645
+	implementation("org.glassfish.jersey.core:jersey-common:2.34")
+	implementation("javax.ws.rs:javax.ws.rs-api:2.1.1")
+}
+
+test {
+	useJUnitPlatform()
+}
+
